@@ -20,6 +20,7 @@ public class LoginFilter implements Filter{
 	static {
 		whiteList.add("login.jsp");
 		whiteList.add("updatePassword.jsp");
+		whiteList.add(".js");
 	}
 
 	@Override

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script src="../lib/jquery-3.1.1.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-3.1.1.js"></script>
 <title>登录</title>
 <script type="text/javascript">
 	function toLogin(){
@@ -16,6 +16,6 @@
 <body>
 	userName:<input type="text" id="userName"><br>
 	password:<input type="password" id="password">
-	<button onclick="toLogin()"></button>
+	<button onclick="toLogin()">LOGIN</button>
 </body>
 </html>
