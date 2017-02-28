@@ -9,7 +9,24 @@
 <script type="text/javascript">
 	function toLogin(){
 		var uName = $('#userName').val();
-		alert(uName);
+		var pwd = $('#password').val();
+		$.ajax({ 
+			type:'POST',
+			url: "${pageContext.request.contextPath}/user/login", 
+			data:{"userName":uName,"password":pwd},
+			dataType:'json',
+			success: function(data){
+				if(data.code==200){
+					alert(data.msg);
+					location.href="${pageContext.request.contextPath}/user/showUser";
+				}else{
+					alert(data.msg);
+				}
+	      	},
+	      	error:function(data){
+	      		alert(222);
+	      	}
+		});
 	}
 </script>
 </head>

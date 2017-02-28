@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.axis.base.Constants;
+
 public class LoginFilter implements Filter{
 	public static List<String> whiteList = new ArrayList<String>();
 	static {
@@ -47,7 +49,7 @@ public class LoginFilter implements Filter{
 		 * 超时处理，ajax请求超时设置超时状态，页面请求超时则返回提示并重定向
 		 * session.getAttribute("")是获取到登录人的session信息
 		 */
-		if (session.getAttribute("") == null) {
+		if (session.getAttribute(Constants.USER_SESSION) == null) {
 			// 判断是否为ajax请求
 			if (httpRequest.getHeader("x-requested-with") != null
 					&& httpRequest.getHeader("x-requested-with").equalsIgnoreCase("XMLHttpRequest")) {

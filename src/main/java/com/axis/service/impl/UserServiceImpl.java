@@ -16,4 +16,8 @@ public class UserServiceImpl implements UserService{
 	public User getUserById(int userId) {
 		return this.userDao.selectByPrimaryKey(userId); 
 	}
+	@Override
+	public User getUserByUserName(String userName) {
+		return userDao.selectEntity("selectUserByUserName", userName);
+	}
 }

@@ -79,4 +79,9 @@
       age = #{age,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectUserByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+  		select * from t_user where user_name = #{0}
+  </select>
+  
 </mapper>
