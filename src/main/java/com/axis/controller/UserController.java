@@ -1,5 +1,7 @@
 package com.axis.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
@@ -7,6 +9,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -30,9 +33,11 @@ public class UserController extends BaseSession {
         model.addAttribute("hh", "啊里巴巴");
         return "showUser";  
     }
-	@RequestMapping("/login")
+	
+	@RequestMapping("/signIn")
 	@ResponseBody
-	public ResponseMsg login(HttpServletRequest request){
+	public ResponseMsg signIn(HttpServletRequest request){
+		log.info(new Date() + "=>>" +"登录开始 =>>");
 		ResponseMsg rm = new ResponseMsg();
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
@@ -44,6 +49,14 @@ public class UserController extends BaseSession {
 			rm.setCode(400);
 			rm.setMsg("登陆失败");
 		}
+		return rm;
+	}
+	
+	@RequestMapping("/signUp")
+	@ResponseBody
+	public ResponseMsg signUp(@RequestBody User user){
+		ResponseMsg rm = new ResponseMsg();
+		
 		return rm;
 	}
 }

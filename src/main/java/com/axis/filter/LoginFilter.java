@@ -20,8 +20,8 @@ import com.axis.base.Constants;
 public class LoginFilter implements Filter{
 	public static List<String> whiteList = new ArrayList<String>();
 	static {
-		whiteList.add("login.jsp");
-		whiteList.add("updatePassword.jsp");
+		whiteList.add("signIn.jsp");
+		whiteList.add("signUp.jsp");
 		whiteList.add(".js");
 	}
 
@@ -32,7 +32,7 @@ public class LoginFilter implements Filter{
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		HttpSession session = httpRequest.getSession();
 		// 登陆url
-		String loginUrl = httpRequest.getContextPath() + "/login.jsp";
+		String loginUrl = httpRequest.getContextPath() + "/signIn.jsp";
 		String url = httpRequest.getRequestURI().toString();
 
 		/*

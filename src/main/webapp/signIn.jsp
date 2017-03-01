@@ -11,19 +11,18 @@
 		var uName = $('#userName').val();
 		var pwd = $('#password').val();
 		$.ajax({ 
-			type:'POST',
-			url: "${pageContext.request.contextPath}/user/login", 
-			data:{"userName":uName,"password":pwd},
-			dataType:'json',
-			success: function(data){
+			type:'POST',//请求类型 post/get
+			url: "${pageContext.request.contextPath}/user/signIn", //请求地址
+			data:{"userName":uName,"password":pwd},//请求参数 此处是json格式
+			dataType:'json',//返回数据类型json/xml/text
+			success: function(data){//请求成功进这里  data是后台返回的参数
 				if(data.code==200){
-					alert(data.msg);
 					location.href="${pageContext.request.contextPath}/user/showUser";
 				}else{
 					alert(data.msg);
 				}
 	      	},
-	      	error:function(data){
+	      	error:function(data){//请求失败进这里
 	      		alert(222);
 	      	}
 		});
