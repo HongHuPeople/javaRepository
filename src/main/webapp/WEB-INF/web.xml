@@ -84,4 +84,5 @@
 		<welcome-file>/signIn.jsp</welcome-file>
 	</welcome-file-list>
 
+	<session-config>30</session-config>
 </web-app>  

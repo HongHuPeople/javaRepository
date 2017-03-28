@@ -203,7 +203,7 @@ public class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSupport impl
 	}
 
 	public void setMapperNamespace(String className) {
-		this.mapperNamespace = "com.axis.mapping." + className + "Mapper";
+		this.mapperNamespace = "com.axis.mapper." + className + "Mapper";
 	}
 
 	@Override

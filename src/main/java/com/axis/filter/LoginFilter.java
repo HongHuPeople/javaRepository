@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.axis.base.Constants;
+import com.axis.controller.UserController;
+import com.axis.entity.User;
 
 public class LoginFilter implements Filter{
 	public static List<String> whiteList = new ArrayList<String>();
@@ -56,8 +58,8 @@ public class LoginFilter implements Filter{
 				httpResponse.addHeader("sessionstatus", "timeOut"); // 返回超时标识
 				httpResponse.addHeader("loginPath", loginUrl);// 返回url
 				chain.doFilter(request, response);// 不可少，否则请求会出错
+				return;
 			} else {
-				// alert('会话过期,请重新登录');
 				String str = "<script language='javascript'>" + "window.top.location.href='" + loginUrl + "';</script>";
 				response.setContentType("text/html;charset=UTF-8");// 解决中文乱码
 				try {
@@ -70,7 +72,24 @@ public class LoginFilter implements Filter{
 				}
 			}
 		} else {
-			chain.doFilter(request, response);
+			User user = (User)httpRequest.getSession().getAttribute(Constants.USER_SESSION);
+			String sessionId = UserController.loginUserSeesionId.get(Constants.USER_ID + user.getId());
+			if(sessionId.equals(httpRequest.getSession().getId())){
+				chain.doFilter(request, response);
+				return;
+			}else{
+				httpRequest.getSession().removeAttribute(Constants.USER_SESSION);
+				String str = "<script language='javascript'>" + "window.top.location.href='" + loginUrl + "';</script>";
+				response.setContentType("text/html;charset=UTF-8");// 解决中文乱码
+				try {
+					PrintWriter writer = response.getWriter();
+					writer.write(str);
+					writer.flush();
+					writer.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 

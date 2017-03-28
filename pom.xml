@@ -194,7 +194,7 @@
 	<build>
 		<finalName>axis</finalName>
 	</build>
-
+	
 	<!-- 指定maven编译方式为jdk1.8版本 -->
 	<profiles>
 		<profile>
