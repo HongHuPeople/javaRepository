@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.axis.dao.UserMapper" >
+<mapper namespace="com.axis.mapper.UserMapper" >
   <resultMap id="BaseResultMap" type="com.axis.entity.User" >
     <id column="ID" property="id" jdbcType="INTEGER" />
-    <result column="USERNANE" property="usernane" jdbcType="VARCHAR" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
     <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
     <result column="PHONE" property="phone" jdbcType="VARCHAR" />
     <result column="NAME" property="name" jdbcType="VARCHAR" />
@@ -18,7 +18,7 @@
     <result column="DEL_FLAG" property="delFlag" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, USERNANE, PASSWORD, PHONE, NAME, AGE, ADDRESS, CITY_ID, SEX, LAST_LOGIN_DATE, 
+    ID, USERNAME, PASSWORD, PHONE, NAME, AGE, ADDRESS, CITY_ID, SEX, LAST_LOGIN_DATE, 
     LAST_LOGIN_IP, CREATE_DATE, UPDATE_DATE, DEL_FLAG
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -32,12 +32,12 @@
     where ID = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.axis.entity.User" >
-    insert into t_user (ID, USERNANE, PASSWORD, 
+    insert into t_user (ID, USERNAME, PASSWORD, 
       PHONE, NAME, AGE, ADDRESS, 
       CITY_ID, SEX, LAST_LOGIN_DATE, 
       LAST_LOGIN_IP, CREATE_DATE, UPDATE_DATE, 
       DEL_FLAG)
-    values (#{id,jdbcType=INTEGER}, #{usernane,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
       #{cityId,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER}, #{lastLoginDate,jdbcType=TIMESTAMP}, 
       #{lastLoginIp,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, 
@@ -49,8 +49,8 @@
       <if test="id != null" >
         ID,
       </if>
-      <if test="usernane != null" >
-        USERNANE,
+      <if test="username != null" >
+        USERNAME,
       </if>
       <if test="password != null" >
         PASSWORD,
@@ -93,8 +93,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="usernane != null" >
-        #{usernane,jdbcType=VARCHAR},
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null" >
         #{password,jdbcType=VARCHAR},
@@ -137,8 +137,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.axis.entity.User" >
     update t_user
     <set >
-      <if test="usernane != null" >
-        USERNANE = #{usernane,jdbcType=VARCHAR},
+      <if test="username != null" >
+        USERNAME = #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null" >
         PASSWORD = #{password,jdbcType=VARCHAR},
@@ -181,7 +181,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.axis.entity.User" >
     update t_user
-    set USERNANE = #{usernane,jdbcType=VARCHAR},
+    set USERNAME = #{username,jdbcType=VARCHAR},
       PASSWORD = #{password,jdbcType=VARCHAR},
       PHONE = #{phone,jdbcType=VARCHAR},
       NAME = #{name,jdbcType=VARCHAR},
@@ -199,6 +199,6 @@
   
   <!-- 登录查询 -->
   <select id="selectUserByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
-  	SELECT * FROM t_user WHERE USERNANE=#{0} AND DEL_FLAG = 1
+  	SELECT * FROM t_user WHERE USERNAME=#{0} AND DEL_FLAG = 1
   </select>
 </mapper>

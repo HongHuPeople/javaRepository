@@ -1,0 +1,88 @@
+@CHARSET "UTF-8";
+html{
+  background: url(../img/bg/bg5.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  margin:0;
+}
+body{
+	height: 100%;
+	margin:0;
+}
+.all{
+	width: 100%;
+	height: 100%;
+}
+.top,.content,.bottom{
+	width: 100%;
+}
+.top{
+	height: 10%;
+}
+.content{
+	height: 60%;
+}
+.bottom{
+	height: 5%;
+	text-align:center;
+	color: red;
+	clear:both;
+}
+.top_right{
+	width:300px;
+	font-size: 14px;
+	font-family: "楷体","楷体_GB2312";
+	font-weight:bold;
+	float: right;
+	text-align:right;
+}
+.top_right a{
+	text-decoration:none;
+	color: yellow;
+}
+a:hover{ 
+	/* background-color:red; */
+	color: red;
+}
+.content_right{
+	width:300px;
+	height: 100%;
+	margin-top: 10%;
+	margin-right:10%;
+	float: right;
+}
+.content_signIn {
+	width:100%;
+	padding-top:20px;
+	padding-bottom:20px;
+	background-color:white;
+	border-radius: 10px;
+	display: none;
+}
+.content_signIn input, p{
+	background: none;
+	color: black;
+	font-size: 16px;
+	font-family: "楷体","楷体_GB2312";
+}
+button{
+	width:120px;
+	background-color: skyblue;
+	text-align: center;
+	border-radius: 5px;
+}
+.bottom_left{
+	width:30%;
+	float: left;
+}
+.bottom_center{
+	width:30%;
+	float: left;
+}
+.bottom_right{
+	width:38%;
+	float: right;
+}

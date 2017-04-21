@@ -3,14 +3,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans    
                         http://www.springframework.org/schema/beans/spring-beans-4.3.xsd    
                         http://www.springframework.org/schema/context    
                         http://www.springframework.org/schema/context/spring-context-4.3.xsd    
                         http://www.springframework.org/schema/mvc    
-                        http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd    
+                        http://www.springframework.org/schema/tx    
+                        http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	<!-- 自动扫描 -->
-	<context:component-scan base-package="com.axis"></context:component-scan>
+	<context:component-scan base-package="com.*" />
 	<!-- 引入配置文件 -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -39,13 +42,13 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="typeAliasesPackage" value="com.axis.entity" />
-		<!-- 自动扫描mapping.xml文件 -->
+		<!-- 自动扫描mapper.xml文件 -->
 		<property name="mapperLocations" value="classpath:com/axis/mapper/*.xml"></property>
 	</bean>
 
 	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.axis.dao" />
+		<property name="basePackage" value="com.axis.mapper" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
 
@@ -55,4 +58,6 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
+	<!-- 使用声明式事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
 </beans>  

@@ -12,7 +12,7 @@ public class User extends BaseEntity{
 
 	private Integer id;
 
-    private String usernane;
+    private String username;
 
     private String password;
 
@@ -46,12 +46,12 @@ public class User extends BaseEntity{
         this.id = id;
     }
 
-    public String getUsernane() {
-        return usernane;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUsernane(String usernane) {
-        this.usernane = usernane == null ? null : usernane.trim();
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
     public String getPassword() {

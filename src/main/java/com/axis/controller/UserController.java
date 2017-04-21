@@ -21,6 +21,7 @@ import com.axis.base.Constants;
 import com.axis.base.ResponseMsg;
 import com.axis.entity.User;
 import com.axis.service.UserService;
+import com.axis.utils.IPUtil;
 import com.axis.utils.MD5Util;
 
 @Controller
@@ -32,12 +33,12 @@ public class UserController extends BaseSession {
 	
 	public static Map<String, String> loginUserSeesionId = new HashMap<String, String>();
 
-	@RequestMapping("/showUser")  
+	@RequestMapping("/homePage")  
     public String toIndex(HttpServletRequest request,Model model){  
 		User user = (User)request.getSession().getAttribute(Constants.USER_SESSION);
         model.addAttribute("user", user);  
         model.addAttribute("hh", "啊里巴巴");
-        return "showUser";  
+        return "homePage";  
     }
 	
 	@RequestMapping("/signIn")
@@ -55,13 +56,33 @@ public class UserController extends BaseSession {
 			if(user.getPassword().equals(password)){
 				loginUserSeesionId.put(Constants.USER_ID+user.getId(), request.getSession().getId());
 				request.getSession().setAttribute(Constants.USER_SESSION, user);
+				try {
+					String loginIp = IPUtil.getIpAddr(request);
+					user.setLastLoginIp(loginIp);
+					user.setLastLoginDate(new Date());
+					userService.updateByUser(user);
+				} catch (Exception e) {
+					e.printStackTrace();
+					rm.setCode(400);
+					rm.setMsg("网络异常,请稍后重试");
+					return rm;
+				}
 				rm.setMsg("登陆成功");
 			}else{
 				rm.setCode(400);
 				rm.setMsg("登陆失败");
 			}
+		}else{
+			rm.setCode(400);
+			rm.setMsg("用户名不存在");
 		}
 		return rm;
+	}
+	
+	@RequestMapping("/toSignUp")
+	@ResponseBody
+	public String toSignUp(){
+		return "signUp";
 	}
 	
 	@RequestMapping("/signUp")
@@ -76,8 +97,10 @@ public class UserController extends BaseSession {
 	public ResponseMsg signOut(HttpServletRequest request){
 		ResponseMsg rm = new ResponseMsg();
 		User user = (User)request.getAttribute(Constants.USER_SESSION);
-		loginUserSeesionId.remove(Constants.USER_ID+user.getId());
-		request.removeAttribute(Constants.USER_SESSION);
+		if(user!=null){
+			loginUserSeesionId.remove(Constants.USER_ID+user.getId());
+			request.removeAttribute(Constants.USER_SESSION);
+		}
 		rm.setMsg("退出成功");
 		return rm;
 	}

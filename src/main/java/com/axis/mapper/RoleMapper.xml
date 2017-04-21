@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.axis.mapper.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.axis.entity.Role" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="ROLE_NAME" property="roleName" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="SEX" property="sex" jdbcType="INTEGER" />
+    <result column="LV" property="lv" jdbcType="INTEGER" />
+    <result column="EXP" property="exp" jdbcType="INTEGER" />
+    <result column="UP_EXP" property="upExp" jdbcType="INTEGER" />
+    <result column="GOLD" property="gold" jdbcType="INTEGER" />
+    <result column="LK" property="lk" jdbcType="INTEGER" />
+    <result column="IQ" property="iq" jdbcType="INTEGER" />
+    <result column="HP" property="hp" jdbcType="INTEGER" />
+    <result column="MP" property="mp" jdbcType="INTEGER" />
+    <result column="HIT" property="hit" jdbcType="INTEGER" />
+    <result column="CRIT" property="crit" jdbcType="DOUBLE" />
+    <result column="EVAD" property="evad" jdbcType="INTEGER" />
+    <result column="ATK" property="atk" jdbcType="INTEGER" />
+    <result column="DEF" property="def" jdbcType="INTEGER" />
+    <result column="VIT" property="vit" jdbcType="INTEGER" />
+    <result column="STR" property="str" jdbcType="INTEGER" />
+    <result column="AGI" property="agi" jdbcType="INTEGER" />
+    <result column="FREE_PROPERTY" property="freeProperty" jdbcType="INTEGER" />
+    <result column="OCCUP_TOTAL" property="occupTotal" jdbcType="INTEGER" />
+    <result column="OCCUP_TOTAL_NOW" property="occupTotalNow" jdbcType="INTEGER" />
+    <result column="PET_TOTAL" property="petTotal" jdbcType="INTEGER" />
+    <result column="PET_NUM_LIMIT" property="petNumLimit" jdbcType="INTEGER" />
+    <result column="MOUNT_TOTAL" property="mountTotal" jdbcType="INTEGER" />
+    <result column="LV_TOP" property="lvTop" jdbcType="INTEGER" />
+    <result column="BACKPACK" property="backpack" jdbcType="INTEGER" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, USER_ID, ROLE_NAME, DESCRIPTION, SEX, LV, EXP, UP_EXP, GOLD, LK, IQ, HP, MP, 
+    HIT, CRIT, EVAD, ATK, DEF, VIT, STR, AGI, FREE_PROPERTY, OCCUP_TOTAL, OCCUP_TOTAL_NOW, 
+    PET_TOTAL, PET_NUM_LIMIT, MOUNT_TOTAL, LV_TOP, BACKPACK, CREATE_DATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from g_role
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from g_role
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.axis.entity.Role" >
+    insert into g_role (ID, USER_ID, ROLE_NAME, 
+      DESCRIPTION, SEX, LV, 
+      EXP, UP_EXP, GOLD, LK, 
+      IQ, HP, MP, HIT, 
+      CRIT, EVAD, ATK, DEF, 
+      VIT, STR, AGI, FREE_PROPERTY, 
+      OCCUP_TOTAL, OCCUP_TOTAL_NOW, PET_TOTAL, 
+      PET_NUM_LIMIT, MOUNT_TOTAL, LV_TOP, 
+      BACKPACK, CREATE_DATE)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{lv,jdbcType=INTEGER}, 
+      #{exp,jdbcType=INTEGER}, #{upExp,jdbcType=INTEGER}, #{gold,jdbcType=INTEGER}, #{lk,jdbcType=INTEGER}, 
+      #{iq,jdbcType=INTEGER}, #{hp,jdbcType=INTEGER}, #{mp,jdbcType=INTEGER}, #{hit,jdbcType=INTEGER}, 
+      #{crit,jdbcType=DOUBLE}, #{evad,jdbcType=INTEGER}, #{atk,jdbcType=INTEGER}, #{def,jdbcType=INTEGER}, 
+      #{vit,jdbcType=INTEGER}, #{str,jdbcType=INTEGER}, #{agi,jdbcType=INTEGER}, #{freeProperty,jdbcType=INTEGER}, 
+      #{occupTotal,jdbcType=INTEGER}, #{occupTotalNow,jdbcType=INTEGER}, #{petTotal,jdbcType=INTEGER}, 
+      #{petNumLimit,jdbcType=INTEGER}, #{mountTotal,jdbcType=INTEGER}, #{lvTop,jdbcType=INTEGER}, 
+      #{backpack,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.axis.entity.Role" >
+    insert into g_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="roleName != null" >
+        ROLE_NAME,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="lv != null" >
+        LV,
+      </if>
+      <if test="exp != null" >
+        EXP,
+      </if>
+      <if test="upExp != null" >
+        UP_EXP,
+      </if>
+      <if test="gold != null" >
+        GOLD,
+      </if>
+      <if test="lk != null" >
+        LK,
+      </if>
+      <if test="iq != null" >
+        IQ,
+      </if>
+      <if test="hp != null" >
+        HP,
+      </if>
+      <if test="mp != null" >
+        MP,
+      </if>
+      <if test="hit != null" >
+        HIT,
+      </if>
+      <if test="crit != null" >
+        CRIT,
+      </if>
+      <if test="evad != null" >
+        EVAD,
+      </if>
+      <if test="atk != null" >
+        ATK,
+      </if>
+      <if test="def != null" >
+        DEF,
+      </if>
+      <if test="vit != null" >
+        VIT,
+      </if>
+      <if test="str != null" >
+        STR,
+      </if>
+      <if test="agi != null" >
+        AGI,
+      </if>
+      <if test="freeProperty != null" >
+        FREE_PROPERTY,
+      </if>
+      <if test="occupTotal != null" >
+        OCCUP_TOTAL,
+      </if>
+      <if test="occupTotalNow != null" >
+        OCCUP_TOTAL_NOW,
+      </if>
+      <if test="petTotal != null" >
+        PET_TOTAL,
+      </if>
+      <if test="petNumLimit != null" >
+        PET_NUM_LIMIT,
+      </if>
+      <if test="mountTotal != null" >
+        MOUNT_TOTAL,
+      </if>
+      <if test="lvTop != null" >
+        LV_TOP,
+      </if>
+      <if test="backpack != null" >
+        BACKPACK,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="lv != null" >
+        #{lv,jdbcType=INTEGER},
+      </if>
+      <if test="exp != null" >
+        #{exp,jdbcType=INTEGER},
+      </if>
+      <if test="upExp != null" >
+        #{upExp,jdbcType=INTEGER},
+      </if>
+      <if test="gold != null" >
+        #{gold,jdbcType=INTEGER},
+      </if>
+      <if test="lk != null" >
+        #{lk,jdbcType=INTEGER},
+      </if>
+      <if test="iq != null" >
+        #{iq,jdbcType=INTEGER},
+      </if>
+      <if test="hp != null" >
+        #{hp,jdbcType=INTEGER},
+      </if>
+      <if test="mp != null" >
+        #{mp,jdbcType=INTEGER},
+      </if>
+      <if test="hit != null" >
+        #{hit,jdbcType=INTEGER},
+      </if>
+      <if test="crit != null" >
+        #{crit,jdbcType=DOUBLE},
+      </if>
+      <if test="evad != null" >
+        #{evad,jdbcType=INTEGER},
+      </if>
+      <if test="atk != null" >
+        #{atk,jdbcType=INTEGER},
+      </if>
+      <if test="def != null" >
+        #{def,jdbcType=INTEGER},
+      </if>
+      <if test="vit != null" >
+        #{vit,jdbcType=INTEGER},
+      </if>
+      <if test="str != null" >
+        #{str,jdbcType=INTEGER},
+      </if>
+      <if test="agi != null" >
+        #{agi,jdbcType=INTEGER},
+      </if>
+      <if test="freeProperty != null" >
+        #{freeProperty,jdbcType=INTEGER},
+      </if>
+      <if test="occupTotal != null" >
+        #{occupTotal,jdbcType=INTEGER},
+      </if>
+      <if test="occupTotalNow != null" >
+        #{occupTotalNow,jdbcType=INTEGER},
+      </if>
+      <if test="petTotal != null" >
+        #{petTotal,jdbcType=INTEGER},
+      </if>
+      <if test="petNumLimit != null" >
+        #{petNumLimit,jdbcType=INTEGER},
+      </if>
+      <if test="mountTotal != null" >
+        #{mountTotal,jdbcType=INTEGER},
+      </if>
+      <if test="lvTop != null" >
+        #{lvTop,jdbcType=INTEGER},
+      </if>
+      <if test="backpack != null" >
+        #{backpack,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.axis.entity.Role" >
+    update g_role
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="roleName != null" >
+        ROLE_NAME = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        SEX = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="lv != null" >
+        LV = #{lv,jdbcType=INTEGER},
+      </if>
+      <if test="exp != null" >
+        EXP = #{exp,jdbcType=INTEGER},
+      </if>
+      <if test="upExp != null" >
+        UP_EXP = #{upExp,jdbcType=INTEGER},
+      </if>
+      <if test="gold != null" >
+        GOLD = #{gold,jdbcType=INTEGER},
+      </if>
+      <if test="lk != null" >
+        LK = #{lk,jdbcType=INTEGER},
+      </if>
+      <if test="iq != null" >
+        IQ = #{iq,jdbcType=INTEGER},
+      </if>
+      <if test="hp != null" >
+        HP = #{hp,jdbcType=INTEGER},
+      </if>
+      <if test="mp != null" >
+        MP = #{mp,jdbcType=INTEGER},
+      </if>
+      <if test="hit != null" >
+        HIT = #{hit,jdbcType=INTEGER},
+      </if>
+      <if test="crit != null" >
+        CRIT = #{crit,jdbcType=DOUBLE},
+      </if>
+      <if test="evad != null" >
+        EVAD = #{evad,jdbcType=INTEGER},
+      </if>
+      <if test="atk != null" >
+        ATK = #{atk,jdbcType=INTEGER},
+      </if>
+      <if test="def != null" >
+        DEF = #{def,jdbcType=INTEGER},
+      </if>
+      <if test="vit != null" >
+        VIT = #{vit,jdbcType=INTEGER},
+      </if>
+      <if test="str != null" >
+        STR = #{str,jdbcType=INTEGER},
+      </if>
+      <if test="agi != null" >
+        AGI = #{agi,jdbcType=INTEGER},
+      </if>
+      <if test="freeProperty != null" >
+        FREE_PROPERTY = #{freeProperty,jdbcType=INTEGER},
+      </if>
+      <if test="occupTotal != null" >
+        OCCUP_TOTAL = #{occupTotal,jdbcType=INTEGER},
+      </if>
+      <if test="occupTotalNow != null" >
+        OCCUP_TOTAL_NOW = #{occupTotalNow,jdbcType=INTEGER},
+      </if>
+      <if test="petTotal != null" >
+        PET_TOTAL = #{petTotal,jdbcType=INTEGER},
+      </if>
+      <if test="petNumLimit != null" >
+        PET_NUM_LIMIT = #{petNumLimit,jdbcType=INTEGER},
+      </if>
+      <if test="mountTotal != null" >
+        MOUNT_TOTAL = #{mountTotal,jdbcType=INTEGER},
+      </if>
+      <if test="lvTop != null" >
+        LV_TOP = #{lvTop,jdbcType=INTEGER},
+      </if>
+      <if test="backpack != null" >
+        BACKPACK = #{backpack,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.axis.entity.Role" >
+    update g_role
+    set USER_ID = #{userId,jdbcType=INTEGER},
+      ROLE_NAME = #{roleName,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=INTEGER},
+      LV = #{lv,jdbcType=INTEGER},
+      EXP = #{exp,jdbcType=INTEGER},
+      UP_EXP = #{upExp,jdbcType=INTEGER},
+      GOLD = #{gold,jdbcType=INTEGER},
+      LK = #{lk,jdbcType=INTEGER},
+      IQ = #{iq,jdbcType=INTEGER},
+      HP = #{hp,jdbcType=INTEGER},
+      MP = #{mp,jdbcType=INTEGER},
+      HIT = #{hit,jdbcType=INTEGER},
+      CRIT = #{crit,jdbcType=DOUBLE},
+      EVAD = #{evad,jdbcType=INTEGER},
+      ATK = #{atk,jdbcType=INTEGER},
+      DEF = #{def,jdbcType=INTEGER},
+      VIT = #{vit,jdbcType=INTEGER},
+      STR = #{str,jdbcType=INTEGER},
+      AGI = #{agi,jdbcType=INTEGER},
+      FREE_PROPERTY = #{freeProperty,jdbcType=INTEGER},
+      OCCUP_TOTAL = #{occupTotal,jdbcType=INTEGER},
+      OCCUP_TOTAL_NOW = #{occupTotalNow,jdbcType=INTEGER},
+      PET_TOTAL = #{petTotal,jdbcType=INTEGER},
+      PET_NUM_LIMIT = #{petNumLimit,jdbcType=INTEGER},
+      MOUNT_TOTAL = #{mountTotal,jdbcType=INTEGER},
+      LV_TOP = #{lvTop,jdbcType=INTEGER},
+      BACKPACK = #{backpack,jdbcType=INTEGER},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -24,7 +24,10 @@ public class LoginFilter implements Filter{
 	static {
 		whiteList.add("signIn.jsp");
 		whiteList.add("signUp.jsp");
-		whiteList.add(".js");
+		whiteList.add("signOut.jsp");
+		whiteList.add("/js");
+		whiteList.add("/css");
+		whiteList.add("/img");
 	}
 
 	@Override

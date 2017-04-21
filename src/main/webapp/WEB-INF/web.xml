@@ -63,7 +63,14 @@
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.gif</url-pattern>
 	</servlet-mapping>
-
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.ico</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.jpg</url-pattern>
+	</servlet-mapping>
 	<!-- Spring MVC servlet -->
 	<servlet>
 		<servlet-name>SpringMVC</servlet-name>
@@ -83,6 +90,7 @@
 	<welcome-file-list>
 		<welcome-file>/signIn.jsp</welcome-file>
 	</welcome-file-list>
-
-	<session-config>30</session-config>
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
 </web-app>  
