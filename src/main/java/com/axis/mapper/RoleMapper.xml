@@ -381,4 +381,8 @@
       CREATE_DATE = #{createDate,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  	SELECT * FROM g_role WHERE user_id=#{0}
+  </select>
 </mapper>
