@@ -384,4 +384,21 @@ public class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSupport impl
 		}
 		return flag;
 	}
+
+	@Override
+	public Integer selectInteger(String id, Object param) {
+		Integer totalItem = (Integer) getSqlSession().selectOne(getMapperNamespace() + "." + id, param);
+		return totalItem;
+	}
+
+	@Override
+	public com.axis.utils.PageModel selectByPage(String id , String countId , Object param  , com.axis.utils.PageModel page) {
+		int countNum = getSqlSession().selectOne(getMapperNamespace() + "." + countId, param);
+		page.setTotalRecord(countNum);
+		if(page.getTotalPage() > 0){
+			List<Object> list = getSqlSession().selectList(id, param);
+			page.setList(list);
+		}
+		return page;
+	}
 }

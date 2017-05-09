@@ -8,7 +8,7 @@ public class Role extends BaseEntity{
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 4562861074768839977L;
+	private static final long serialVersionUID = -1109761343926779150L;
 
 	private Integer id;
 
@@ -22,6 +22,8 @@ public class Role extends BaseEntity{
 
     private Integer lv;
 
+    private Integer lvTop;
+
     private Integer exp;
 
     private Integer upExp;
@@ -34,7 +36,11 @@ public class Role extends BaseEntity{
 
     private Integer hp;
 
+    private Integer nowHp;
+
     private Integer mp;
+
+    private Integer nowMp;
 
     private Integer hit;
 
@@ -48,9 +54,19 @@ public class Role extends BaseEntity{
 
     private Integer vit;
 
+    private Integer vitTop;
+
     private Integer str;
 
+    private Integer strTop;
+
     private Integer agi;
+
+    private Integer agiTop;
+
+    private Integer zl;
+
+    private Integer zlTop;
 
     private Integer freeProperty;
 
@@ -63,8 +79,6 @@ public class Role extends BaseEntity{
     private Integer petNumLimit;
 
     private Integer mountTotal;
-
-    private Integer lvTop;
 
     private Integer backpack;
 
@@ -118,6 +132,14 @@ public class Role extends BaseEntity{
         this.lv = lv;
     }
 
+    public Integer getLvTop() {
+        return lvTop;
+    }
+
+    public void setLvTop(Integer lvTop) {
+        this.lvTop = lvTop;
+    }
+
     public Integer getExp() {
         return exp;
     }
@@ -166,12 +188,28 @@ public class Role extends BaseEntity{
         this.hp = hp;
     }
 
+    public Integer getNowHp() {
+        return nowHp;
+    }
+
+    public void setNowHp(Integer nowHp) {
+        this.nowHp = nowHp;
+    }
+
     public Integer getMp() {
         return mp;
     }
 
     public void setMp(Integer mp) {
         this.mp = mp;
+    }
+
+    public Integer getNowMp() {
+        return nowMp;
+    }
+
+    public void setNowMp(Integer nowMp) {
+        this.nowMp = nowMp;
     }
 
     public Integer getHit() {
@@ -222,6 +260,14 @@ public class Role extends BaseEntity{
         this.vit = vit;
     }
 
+    public Integer getVitTop() {
+        return vitTop;
+    }
+
+    public void setVitTop(Integer vitTop) {
+        this.vitTop = vitTop;
+    }
+
     public Integer getStr() {
         return str;
     }
@@ -230,12 +276,44 @@ public class Role extends BaseEntity{
         this.str = str;
     }
 
+    public Integer getStrTop() {
+        return strTop;
+    }
+
+    public void setStrTop(Integer strTop) {
+        this.strTop = strTop;
+    }
+
     public Integer getAgi() {
         return agi;
     }
 
     public void setAgi(Integer agi) {
         this.agi = agi;
+    }
+
+    public Integer getAgiTop() {
+        return agiTop;
+    }
+
+    public void setAgiTop(Integer agiTop) {
+        this.agiTop = agiTop;
+    }
+
+    public Integer getZl() {
+        return zl;
+    }
+
+    public void setZl(Integer zl) {
+        this.zl = zl;
+    }
+
+    public Integer getZlTop() {
+        return zlTop;
+    }
+
+    public void setZlTop(Integer zlTop) {
+        this.zlTop = zlTop;
     }
 
     public Integer getFreeProperty() {
@@ -284,14 +362,6 @@ public class Role extends BaseEntity{
 
     public void setMountTotal(Integer mountTotal) {
         this.mountTotal = mountTotal;
-    }
-
-    public Integer getLvTop() {
-        return lvTop;
-    }
-
-    public void setLvTop(Integer lvTop) {
-        this.lvTop = lvTop;
     }
 
     public Integer getBackpack() {

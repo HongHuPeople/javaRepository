@@ -10,4 +10,6 @@ public interface RoleService {
 
 	boolean createRole(Role role);
 
+	Role selectRoleById(Integer id);
+
 }

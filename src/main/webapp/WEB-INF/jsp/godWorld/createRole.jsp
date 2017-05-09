@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@include file="../base.jsp"%>
-<title>创建角色</title>
+<title><%=gyTitle%></title>
 </head>
 <script type="text/javascript">
 	function toCreateRole(){

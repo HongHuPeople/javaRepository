@@ -7,5 +7,7 @@ public interface UserService {
 
 	public User getUserByUserName(String userName);
 
-	public boolean updateByUser(User user)  throws Exception; 
+	public boolean updateByUser(User user)  throws Exception;
+
+	public boolean signUp(User user); 
 }

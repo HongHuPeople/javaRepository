@@ -1,6 +1,8 @@
 package com.axis.service.impl;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,5 +39,13 @@ public class UserServiceImpl implements UserService{
 		}else{
 			throw new RuntimeException("登录信息记录失败");
 		}
+	}
+	@Override
+	public boolean signUp(User user) {
+		List<User> users = userDao.select("validateUser", user);
+		if(users == null || users.isEmpty()){
+			return false;
+		}
+		return userDao.insertSelective(user);
 	}
 }

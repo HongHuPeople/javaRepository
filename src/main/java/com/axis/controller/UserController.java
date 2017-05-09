@@ -28,6 +28,7 @@ import com.axis.utils.MD5Util;
 @RequestMapping("/user")
 public class UserController extends BaseSession {
 	private static Log log = LogFactory.getLog(UserController.class);
+	
 	@Autowired
 	private UserService userService;
 	
@@ -37,7 +38,6 @@ public class UserController extends BaseSession {
     public String toIndex(HttpServletRequest request,Model model){  
 		User user = (User)request.getSession().getAttribute(Constants.USER_SESSION);
         model.addAttribute("user", user);  
-        model.addAttribute("hh", "啊里巴巴");
         return "homePage";  
     }
 	
@@ -87,8 +87,30 @@ public class UserController extends BaseSession {
 	
 	@RequestMapping("/signUp")
 	@ResponseBody
-	public ResponseMsg signUp(@RequestBody User user){
+	public ResponseMsg signUp(HttpServletRequest request){
 		ResponseMsg rm = new ResponseMsg();
+		
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String phone = request.getParameter("phone");
+		String name = request.getParameter("name");
+		String age = request.getParameter("age");
+		String sex = request.getParameter("sex");
+		User user = new User();
+		user.setUsername(username);
+		user.setPassword(MD5Util.getMD5Code(password));
+		user.setPhone(phone);
+		user.setName(name);
+		user.setAge(Integer.valueOf(age));
+		user.setSex(Integer.valueOf(sex));
+		user.setCreateDate(new Date());
+		
+		if(!userService.signUp(user)){
+			rm.setCode(400);
+			rm.setMsg("帐号或手机号已被使用");
+		}else{
+			rm.setMsg("注册成功");
+		}
 		return rm;
 	}
 	
@@ -98,7 +120,7 @@ public class UserController extends BaseSession {
 		ResponseMsg rm = new ResponseMsg();
 		User user = (User)request.getAttribute(Constants.USER_SESSION);
 		if(user!=null){
-			loginUserSeesionId.remove(Constants.USER_ID+user.getId());
+			loginUserSeesionId.remove(Constants.USER_ID + user.getId());
 			request.removeAttribute(Constants.USER_SESSION);
 		}
 		rm.setMsg("退出成功");

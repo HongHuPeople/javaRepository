@@ -1,6 +1,7 @@
 package com.axis.base;
 
 import java.util.List;
+
 import java.util.Map;
 
 import org.springframework.dao.DataAccessException;
@@ -71,4 +72,8 @@ public interface BaseDao<T> {
 	public boolean insertByList(String id, List<T> list);
 
 	public boolean updateByList(String id, List<T> list);
+	
+	public Integer selectInteger(String id , Object param);
+	
+	public com.axis.utils.PageModel selectByPage(String id , String countId ,Object param , com.axis.utils.PageModel page);
 }

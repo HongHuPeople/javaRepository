@@ -42,13 +42,13 @@
 </style>
 <script type="text/javascript">
 	$(function(){
-		swal({
+		/* swal({
 			  title: "Welcome My World !",
 			  text: "Wait 2 seconds to enter the home page.",
 			  imageUrl: "${pageContext.request.contextPath}/img/thumbs-up.jpg",
 			  timer: 2000,
 			  showConfirmButton: false
-		});
+		}); */
 	});
 </script>
 </head>
@@ -61,7 +61,7 @@
 				<li><a href="#">导航2</a></li>
 				<li><a href="#">导航3</a></li>
 				<li><a href="#">导航4</a></li>
-				<li><a href="${pageContext.request.contextPath}/gRole/toRolePage">神的世界</a></li>
+				<li><a href="${pageContext.request.contextPath}/gRole/toRolePage">神の世界</a></li>
 				<li><a href="#">导航6</a></li>
 			</ul>
 		</center>

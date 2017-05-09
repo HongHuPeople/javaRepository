@@ -201,4 +201,8 @@
   <select id="selectUserByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
   	SELECT * FROM t_user WHERE USERNAME=#{0} AND DEL_FLAG = 1
   </select>
+  
+  <select id="validateUser" parameterType="com.axis.entity.User" resultMap="BaseResultMap">
+  	SELECT * FROM t_user WHERE DEL_FLAG = 1 AND (USERNAME=#{username} OR PHONE=#{phone})
+  </select>
 </mapper>

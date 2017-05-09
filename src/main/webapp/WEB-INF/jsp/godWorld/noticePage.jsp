@@ -8,8 +8,9 @@
 <title><%=gyTitle%></title>
 </head>
 <body>
-	<c:forEach var="role" items="${roleList }">
-		<p>角色：${role.roleName}&nbsp;&nbsp;&nbsp;&nbsp;等级：${role.lv}&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/game/toNoticePage?id=${role.id}">进入</a></p>
-	</c:forEach>
+	<p>维护公告一</p>
+	<p>维护公告二</p>
+	<p>维护公告三</p>
+	<p><a href="${pageContext.request.contextPath}/game/toGameWorld?id=${role.id}">进入</a></p>
 </body>
 </html>

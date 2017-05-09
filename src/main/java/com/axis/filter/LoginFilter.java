@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.axis.base.Constants;
 import com.axis.controller.UserController;
 import com.axis.entity.User;
@@ -77,9 +79,11 @@ public class LoginFilter implements Filter{
 		} else {
 			User user = (User)httpRequest.getSession().getAttribute(Constants.USER_SESSION);
 			String sessionId = UserController.loginUserSeesionId.get(Constants.USER_ID + user.getId());
-			if(sessionId.equals(httpRequest.getSession().getId())){
-				chain.doFilter(request, response);
-				return;
+			if(StringUtils.isNotBlank(sessionId)){
+				if(sessionId.equals(httpRequest.getSession().getId())){
+					chain.doFilter(request, response);
+					return;
+				}
 			}else{
 				httpRequest.getSession().removeAttribute(Constants.USER_SESSION);
 				String str = "<script language='javascript'>" + "window.top.location.href='" + loginUrl + "';</script>";
